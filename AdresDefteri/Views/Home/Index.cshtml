@@ -1,0 +1,47 @@
+﻿@using AdresDefteri.Models.Entity
+@model List<TBLAdresDefteri>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<br />
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    <label>Kişi Adı Soyadı:</label> @Html.TextBox("searchitem")
+    <button class="btn btn-info">Ara</button>
+}
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Ad Soyad</th>
+        <th>TC</th>
+        <th>Sabit Telefon</th>
+        <th>Cep Telefon</th>
+        <th>Adres</th>
+        <th>İlçe</th>
+        <th>İl</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Kontrollü Sil</th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.AdSoyad</td>
+                <td>@item.TC</td>
+                <td>@item.SabitTel</td>
+                <td>@item.CepTel</td>
+                <td>@item.Adres</td>
+                <td>@item.İlce</td>
+                <td>@item.İl</td>
+                <td><a class="btn btn-danger" href="/Home/Delete/@item.id">Sil</a></td>
+                <td><a class="btn btn-primary" href="/Home/Update/@item.id">Güncelle</a></td>
+                <td>@Html.ActionLink("Sil", "Delete", new { id = item.id }, new { @class = "btn btn-warning", onclick = "return confirm('Silme işlemini onaylıyor musunuz?')" })</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-warning" href="/Home/Ekle">Yeni Kişi Ekle</a>

@@ -1,0 +1,88 @@
+﻿@model AdresDefteri.Models.Entity.TBLAdresDefteri
+
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<h2>Ekle</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label class="control-label col-md-2">Ad Soyad</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AdSoyad, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AdSoyad, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">TC</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TC, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TC, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Sabit Tel</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SabitTel, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SabitTel, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Cep Tel</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CepTel, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CepTel, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Adres</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Adres, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Adres, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">İlçe</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.İlce, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.İlce, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">İl</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.İl, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.İl, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button class="btn btn-warning" id="btnEkle">Ekle</button>
+        </div>
+    </div>
+</div>
+        <script>
+            $('#btnekle').click(function () {
+                alert('Müşteri Ekleme İşlemi Başarılı');
+            });
+        </script>
+    
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
